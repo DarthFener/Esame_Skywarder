@@ -14,7 +14,7 @@
 int counter;
 int discesa;
 int atterrato;
-int quotaVecchia;
+float quotaVecchia;
 
 typedef enum
 {
@@ -38,7 +38,7 @@ void init() {
     printf("Init!\n"); 
     counter = 0;
     discesa = 0;
-    quotaVecchia = 0;
+    quotaVecchia = 0.0f;
     state_t state = STATE_INIT;
     atterrato = 0;
 }
@@ -80,7 +80,7 @@ void update(float acc_x, float acc_y, float acc_z, float gyro_x, float gyro_y,
          del sensore
         */
 
-        if (differenza_quota > 0){
+        if (differenza_quota > 0.0f){
             discesa = 0;
         } else{
 
@@ -103,10 +103,10 @@ void update(float acc_x, float acc_y, float acc_z, float gyro_x, float gyro_y,
     */
     if ((norma_accelerazione > (9.8f - DELTAACCELRAZIONE)) && 
             (norma_accelerazione < (9.8f + DELTAACCELRAZIONE)) && 
-            (norma_rotazioni > (0 - DELTAROTAZIONI)) &&
-            (norma_rotazioni < (0 + DELTAROTAZIONI)) &&
-            (differenza_quota > (0 - DELTAALTITUDINE)) &&
-            (differenza_quota < (0 + DELTAALTITUDINE)))
+            (norma_rotazioni > (0.0f - DELTAROTAZIONI)) &&
+            (norma_rotazioni < (0.0f + DELTAROTAZIONI)) &&
+            (differenza_quota > (0.0f - DELTAALTITUDINE)) &&
+            (differenza_quota < (0.0f + DELTAALTITUDINE)))
         {
            atterrato ++;
         } else{
